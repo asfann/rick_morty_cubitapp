@@ -1,11 +1,14 @@
 
 import 'package:flutter/material.dart';
 
+import '../domain/models/character_model/character_model.dart';
+
 class HeroCard extends StatelessWidget {
   const HeroCard({
-    Key? key, required this.onTap,
+    Key? key, required this.onTap, required this.character,
   }) : super(key: key);
 final Function() onTap;
+  final Character character;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,13 +22,13 @@ final Function() onTap;
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Image.asset(
-                'images/_image_.png',
+              Image.network(
+                character.image,
                 fit: BoxFit.fill,
               ),
-              const ListTile(
-                title: Text('Rick Sanchez'),
-                subtitle: Text("Human"),
+               ListTile(
+                title: Text(character.name),
+                subtitle: Text(character.species),
               )
             ],
           ),

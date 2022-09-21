@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rick_morty_cubitapp/views/character_page.dart';
+import 'package:rick_morty_cubitapp/views/characters_view_page.dart';
 import 'package:rick_morty_cubitapp/views/planet_page.dart';
+import 'package:rick_morty_cubitapp/views/planet_view_page.dart';
 
 import 'base/base_scaffold.dart';
 
@@ -17,7 +19,7 @@ class MenuView extends StatelessWidget {
           GestureDetector(
             onTap:  () {
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => const CharacterPage()));
+                  builder: (context) =>  const CharactersView()));
             },
             child:const  Text(
               "Characters",
@@ -28,7 +30,7 @@ class MenuView extends StatelessWidget {
           GestureDetector(
             onTap:  () {
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => const PlanetPage()));
+                  builder: (context) => const PlanetView()));
             },
             child: const Text(
               "Locations",

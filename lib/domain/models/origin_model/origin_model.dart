@@ -6,8 +6,8 @@ part 'origin_model.g.dart';
 class Origin with _$Origin {
 
   const factory Origin({
-    required String name,
-    required String url
+    @Default('')  String name,
+    @Default('')  String url
   }) = _Origin;
 
 

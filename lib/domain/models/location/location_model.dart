@@ -7,8 +7,12 @@ class Location with _$Location {
 
 
   const factory Location({
-    required String name,
-    required String url
+    required int id,
+    @Default('')  String name,
+    @Default('')  String url,
+    @Default('')  String dimension,
+    @Default("") String type,
+    @Default([])  List<String> residents
   }) = _Location;
 
 

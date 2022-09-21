@@ -1,12 +1,13 @@
 
 import 'package:flutter/material.dart';
 
-class InfoCard extends StatelessWidget {
-  const InfoCard({
-    Key? key, required this.title, required this.name,
+class InfoEpisode extends StatelessWidget {
+  const InfoEpisode({
+    Key? key, required this.title, required this.name, required this.leading,
   }) : super(key: key);
-final String title;
-final String name;
+  final String title;
+  final String name;
+  final String leading;
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -14,6 +15,10 @@ final String name;
       child:  Card(
         color: const Color(0xFFFAFAFA),
         child: ListTile(
+          leading: Text(leading,
+            style: const TextStyle(
+              fontSize: 14,
+            ),),
           title: Text( title,
             style: const TextStyle(
                 fontSize: 16,
@@ -24,8 +29,9 @@ final String name;
               fontSize: 14,
             ),),
 
-      trailing: const Icon(Icons.arrow_forward_ios_sharp),
-      ),
+
+          trailing: const Icon(Icons.arrow_forward_ios_sharp),
+        ),
 
       ),
     );
