@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rick_morty_cubitapp/views/character_page.dart';
-import 'package:rick_morty_cubitapp/views/characters_view.dart';
-import 'package:rick_morty_cubitapp/views/menu_view.dart';
+import 'package:rick_morty_cubitapp/views/characters_view_page.dart';
+import 'package:rick_morty_cubitapp/views/menu_view_page.dart';
 import 'package:rick_morty_cubitapp/views/planet_page.dart';
-import 'package:rick_morty_cubitapp/views/planet_view.dart';
+import 'package:rick_morty_cubitapp/views/planet_view_page.dart';
 
 void main() {
   runApp(const MyApp());

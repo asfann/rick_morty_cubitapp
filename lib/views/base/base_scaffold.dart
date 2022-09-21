@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_morty_cubitapp/views/menu_view.dart';
+import 'package:rick_morty_cubitapp/views/menu_view_page.dart';
 
 class BaseScaffold extends StatelessWidget {
   const BaseScaffold({Key? key, required this.body}) : super(key: key);

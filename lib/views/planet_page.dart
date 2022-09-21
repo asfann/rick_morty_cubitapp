@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rick_morty_cubitapp/base/base_scaffold.dart';
 import 'package:rick_morty_cubitapp/views/character_page.dart';
 import 'package:rick_morty_cubitapp/widget/back_button.dart';
 import 'package:rick_morty_cubitapp/widget/hero_card.dart';
+
+import 'base/base_scaffold.dart';
 
 class PlanetPage extends StatelessWidget {
   const PlanetPage({Key? key}) : super(key: key);

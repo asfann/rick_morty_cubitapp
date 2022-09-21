@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rick_morty_cubitapp/base/base_scaffold.dart';
 import 'package:rick_morty_cubitapp/widget/advanced_button.dart';
 import 'package:rick_morty_cubitapp/widget/main_logo.dart';
 import 'package:rick_morty_cubitapp/widget/planet_card.dart';
 import 'package:rick_morty_cubitapp/widget/search_bar.dart';
+
+import 'base/base_scaffold.dart';
 
 class PlanetView extends StatelessWidget {
   const PlanetView({Key? key}) : super(key: key);

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rick_morty_cubitapp/base/base_scaffold.dart';
 import 'package:rick_morty_cubitapp/views/character_page.dart';
 import 'package:rick_morty_cubitapp/views/planet_page.dart';
+
+import 'base/base_scaffold.dart';
 
 class MenuView extends StatelessWidget {
   const MenuView({Key? key}) : super(key: key);

@@ -4,7 +4,8 @@ import 'package:rick_morty_cubitapp/widget/advanced_button.dart';
 import 'package:rick_morty_cubitapp/widget/hero_card.dart';
 import 'package:rick_morty_cubitapp/widget/main_logo.dart';
 import 'package:rick_morty_cubitapp/widget/search_bar.dart';
-import '../base/base_scaffold.dart';
+
+import 'base/base_scaffold.dart';
 
 class CharactersView extends StatelessWidget {
   const CharactersView({Key? key}) : super(key: key);
