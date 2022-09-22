@@ -21,7 +21,7 @@ class AdvancedButton extends StatelessWidget {
         ),
         child: Row(
           children:  [
-          show ? const Icon(Icons.menu):const SizedBox(),
+          show ? const SizedBox():const Icon(Icons.menu),
             const SizedBox(width: 90),
             Text(
               text,

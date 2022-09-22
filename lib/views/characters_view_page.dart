@@ -8,6 +8,7 @@ import 'package:rick_morty_cubitapp/widget/hero_card.dart';
 import 'package:rick_morty_cubitapp/widget/main_logo.dart';
 import '../domain/character_cubit/characters_cubit.dart';
 import '../domain/models/character_model/character_model.dart';
+import '../widget/character_filter.dart';
 import 'base/base_scaffold.dart';
 
 class CharactersView extends StatefulWidget {
@@ -33,10 +34,10 @@ class _CharactersViewState extends State<CharactersView> {
                 textFieldConfiguration: TextFieldConfiguration(
                   autocorrect: false,
                   decoration: InputDecoration(
+                    prefixIcon:const Icon(Icons.search),
                       filled: true,
                       fillColor: Colors.white,
                       hintText: "Filter by name...",
-                      suffixIcon:const Icon(Icons.search),
                       contentPadding:
                           const EdgeInsets.only(left: 20, bottom: 5, top: 12.5),
                       focusedBorder: OutlineInputBorder(
@@ -91,7 +92,7 @@ class _CharactersViewState extends State<CharactersView> {
                 Navigator.push(
                         context,
                         TransparentRoute(
-                            builder: (context) => const FilterWidget()))
+                            builder: (context) => const CharacterFilter()))
                     .then((value) {
                   if (value is Map<String, dynamic>) {
                     // BlocProvider.of<CharactersCubit>(context).fetchCharactersWithFilter(page: 1, params: value);
@@ -128,120 +129,5 @@ class _CharactersViewState extends State<CharactersView> {
         );
       },
     ));
-  }
-}
-
-class FilterWidget extends StatefulWidget {
-  const FilterWidget({Key? key}) : super(key: key);
-
-  @override
-  State<FilterWidget> createState() => _FilterWidgetState();
-}
-
-class _FilterWidgetState extends State<FilterWidget> {
-  String dropdownSpecies = 'Species';
-  String dropdownGender = 'Gender';
-  String dropdownStatus = 'Status';
-
-  var speciesItems = ['Species', 'Human', 'Alien'];
-  var genderItems = ['Gender', 'Male', 'Female', 'Genderless', 'Unknown'];
-  var statusItems = ['Status', 'Alive', 'Dead', 'Unknown'];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black.withOpacity(0.5),
-      body: Center(
-        child: Container(
-          height: 330,
-          width: 300,
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(10)),
-          child: Column(
-            children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                const Text(
-                  'Filters',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                Padding(
-                    padding: const EdgeInsets.only(left: 150),
-                    child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.close)))
-              ]),
-              DropdownButton(
-                value: dropdownSpecies,
-                icon: const Icon(Icons.keyboard_arrow_down),
-                items: speciesItems.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: SizedBox(width: 200, child: Text(items)),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    dropdownSpecies = newValue!;
-                  });
-                },
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              DropdownButton(
-                value: dropdownGender,
-                icon: const Icon(Icons.keyboard_arrow_down),
-                items: genderItems.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: SizedBox(width: 200, child: Text(items)),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    dropdownGender = newValue!;
-                  });
-                },
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              DropdownButton(
-                value: dropdownStatus,
-                icon: const Icon(Icons.keyboard_arrow_down),
-                items: statusItems.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: SizedBox(width: 200, child: Text(items)),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    dropdownStatus = newValue!;
-                  });
-                },
-              ),
-              AdvancedButton(
-                  text: 'APPLY',
-                  onPressed: () {
-                    Map<String, dynamic> popResults = {};
-                    if (dropdownSpecies != 'Species') {
-                      popResults['species'] = dropdownSpecies;
-                    }
-                    if (dropdownGender != 'Gender') {
-                      popResults['gender'] = dropdownGender;
-                    }
-                    if (dropdownStatus != 'Status') {
-                      popResults['status'] = dropdownStatus;
-                    }
-                    Navigator.pop(context, popResults);
-                  })
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }
