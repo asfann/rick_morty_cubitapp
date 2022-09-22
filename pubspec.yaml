@@ -17,6 +17,7 @@ dependencies:
   flutter_bloc: ^8.1.1
   bloc: ^8.1.0
   equatable: ^2.0.5
+  flutter_typeahead: ^4.1.1
 
 dev_dependencies:
   freezed_annotation: ^2.1.0
@@ -34,3 +35,10 @@ flutter:
 
   assets:
     - images/
+
+
+analyzer:
+  exclude:
+    - "lib/generated/**"
+    - "**.freezed.dart"
+    - "**.g.dart"

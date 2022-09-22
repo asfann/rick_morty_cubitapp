@@ -11,8 +11,9 @@ class PlanetStateLoading extends PlanetState {
 
 class PlanetStateSuccess extends PlanetState {
   final Location location;
+  final List<Character> residents;
 
-  const PlanetStateSuccess({required this.location});
+  const PlanetStateSuccess({required this.location, required this.residents});
 
   @override
   List<Object> get props => [];

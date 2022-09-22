@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 
 class AdvancedButton extends StatelessWidget {
   const AdvancedButton({
-    Key? key, required this.onPressed,
+    Key? key, required this.onPressed, required this.text, this.show=false,
   }) : super(key: key);
   final Function() onPressed;
-
+  final String text;
+  final bool show;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,17 +15,17 @@ class AdvancedButton extends StatelessWidget {
       child: MaterialButton(
         onPressed: onPressed,
         height: 40,
-        color: Color(0xFFE3F2FD),
+        color: const Color(0xFFE3F2FD),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5),
         ),
         child: Row(
-          children: const [
-            Icon(Icons.menu),
-            SizedBox(width: 90),
+          children:  [
+          show ? const Icon(Icons.menu):const SizedBox(),
+            const SizedBox(width: 90),
             Text(
-              'ADVANCED FILTER',
-              style: TextStyle(
+              text,
+              style: const TextStyle(
                 color: Color(0xFF2196F3),
               ),
             ),

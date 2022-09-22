@@ -19,4 +19,9 @@ class CharactersRepository extends BaseDioApiRequest {
     Response response = await sendRequest(url: "$charactersUrl/$id",queryParameters: params);
     return Character.fromJson(response.data);
   }
+
+  Future<Character> getCharacterByUrl(String url) async {
+    Response response = await sendRequest(url: url);
+    return Character.fromJson(response.data);
+  }
 }

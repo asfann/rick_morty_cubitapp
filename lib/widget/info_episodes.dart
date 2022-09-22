@@ -28,8 +28,6 @@ class InfoEpisode extends StatelessWidget {
             style: const TextStyle(
               fontSize: 14,
             ),),
-
-
           trailing: const Icon(Icons.arrow_forward_ios_sharp),
         ),
 

@@ -4,14 +4,12 @@ part 'location_model.g.dart';
 
 @Freezed()
 class Location with _$Location {
-
-
   const factory Location({
-    required int id,
+     int? id,
     @Default('')  String name,
     @Default('')  String url,
     @Default('')  String dimension,
-    @Default("") String type,
+    @Default('') String type,
     @Default([])  List<String> residents
   }) = _Location;
 

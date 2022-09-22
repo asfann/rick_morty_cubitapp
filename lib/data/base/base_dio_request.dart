@@ -11,6 +11,7 @@ class BaseDioApiRequest {
   Future<Response> sendRequest(
       {required String url, Map<String, dynamic>? queryParameters}) async {
     try {
+      print(queryParameters);
       Response response = await _dio.get(url, queryParameters: queryParameters);
       return response;
     } on DioError catch (e) {

@@ -10,7 +10,40 @@ import 'package:rick_morty_cubitapp/views/planet_view_page.dart';
 
 import 'domain/characters_cubit/character_cubit.dart';
 
+class SimpleBlocObserver extends BlocObserver {
+  @override
+  void onEvent(Bloc bloc, Object? event) {
+    super.onEvent(bloc, event);
+    print(event);
+  }
+
+  @override
+  void onChange(BlocBase bloc, Change change) {
+    super.onChange(bloc, change);
+    print(change);
+  }
+
+  @override
+  void onCreate(BlocBase bloc) {
+    super.onCreate(bloc);
+    print(bloc);
+  }
+
+  @override
+  void onTransition(Bloc bloc, Transition transition) {
+    super.onTransition(bloc, transition);
+    print(transition);
+  }
+
+  @override
+  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+    print(error);
+    super.onError(bloc, error, stackTrace);
+  }
+}
+
 void main() {
+  Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
 }
 
@@ -22,12 +55,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-      BlocProvider(create: (context) => CharactersCubit(),
+      BlocProvider(create: (context) => CharactersCubit()..fetchCharacters(),
       ),
         BlocProvider(create: (context) => PlanetsCubit(),
         ),
     ],
-      child:const MaterialApp(
+      child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: CharactersView()
       ),

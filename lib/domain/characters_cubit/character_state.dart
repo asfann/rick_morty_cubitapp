@@ -11,8 +11,11 @@ class CharacterStateLoading extends CharacterState {
 
 class CharacterStateSuccess extends CharacterState {
   final Character character;
+  final List<Episode> episode;
+  final Location? location;
 
-  const CharacterStateSuccess({required this.character});
+
+  const CharacterStateSuccess({required this.character,required this.episode, required this.location});
 
   @override
   List<Object> get props => [];

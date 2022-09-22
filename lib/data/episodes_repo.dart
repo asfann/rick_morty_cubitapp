@@ -18,4 +18,10 @@ class EpisodesRepo extends BaseDioApiRequest {
     Response response = await sendRequest(url: "$episodesUrl/$id",queryParameters: params);
     return Episode.fromJson(response.data);
   }
+
+
+  Future<Episode> getEpisodeByUrl(String url) async {
+    Response response = await sendRequest(url: url);
+    return Episode.fromJson(response.data);
+  }
 }

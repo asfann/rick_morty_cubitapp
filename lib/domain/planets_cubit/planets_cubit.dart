@@ -19,4 +19,15 @@ Future<void> fetchPlanet({int? page}) async {
     emit(PlanetsStateFailure(exception: e));
   }
 }
+
+
+  Future<void> fetchPlanetsWithFilter({int? page, required Map<String, dynamic> params}) async {
+    emit(PlanetsStateLoading());
+    try {
+      final planetsList = await repository.getAllLocations(params: {'page':page}..addAll(params));
+      emit(PlanetsStateSuccess(location: planetsList));
+    } on RequestException catch(e){
+      emit(PlanetsStateFailure(exception: e));
+    }
+  }
 }

@@ -12,6 +12,8 @@ class MenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      iconBool: true,
+        close: true,
         body: Center(
       child: Column(
         children:  [
@@ -19,7 +21,7 @@ class MenuView extends StatelessWidget {
           GestureDetector(
             onTap:  () {
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) =>  const CharactersView()));
+                  builder: (context) =>   CharactersView()));
             },
             child:const  Text(
               "Characters",

@@ -19,4 +19,14 @@ class CharactersCubit extends Cubit<CharactersState> {
       emit(CharactersStateFailure(exception: e));
     }
   }
+
+  Future<void> fetchCharactersWithFilter({int? page, required Map<String, dynamic> params}) async {
+    emit(CharactersStateLoading());
+    try {
+      final charactersList = await repository.getAllCharacters(params: {'page':page}..addAll(params));
+      emit(CharactersStateSuccess(characters: charactersList));
+    } on RequestException catch(e){
+      emit(CharactersStateFailure(exception: e));
+    }
+  }
 }

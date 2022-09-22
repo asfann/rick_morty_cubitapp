@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_morty_cubitapp/data/characters_repo.dart';
+import 'package:rick_morty_cubitapp/views/planet_page.dart';
 import 'package:rick_morty_cubitapp/widget/back_button.dart';
 import 'package:rick_morty_cubitapp/widget/info_card.dart';
 
 import '../domain/characters_cubit/character_cubit.dart';
+import '../widget/info_episodes.dart';
 import 'base/base_scaffold.dart';
 
 class CharacterPage extends StatelessWidget {
@@ -78,6 +80,19 @@ class CharacterPage extends StatelessWidget {
                   InfoCard(
                     title: "Location",
                     name: state.character.location?.name ?? '',
+                    showArrow: true,
+                    onTapBool: true,
+                    onTap: () {
+                      if(state.location?.id != null) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    PlanetPage(id: state.location!.id!,)
+                            )
+                        );
+                      }
+                    },
                   ),
                   const Padding(
                     padding: EdgeInsets.only(left: 24, top: 52),
@@ -90,24 +105,21 @@ class CharacterPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Expanded(
-                  //   child: ListView.builder(
-                  //     itemCount: state.character.episode.length,
-                  //     itemBuilder: (BuildContext context, int index) {
-                  //       return InfoEpisode(
-                  //           title: state.character.episode.first,
-                  //           name: state.character.episode.single,
-                  //           leading: state.character.episode.last);
-                  //     },
-                  //   ),
-                  // ),
+                  Column(
+                    children: List.generate(state.episode.length, (index) => InfoEpisode(
+                        title: state.episode[index].episode,
+                        name: state.episode[index].name,
+                        leading: state.episode[index].airDate)),
+                  )
                 ],
               ),
             );
           } else if (state is CharacterStateFailure) {
             return Text(state.exception.message);
           } else if (state is CharacterStateLoading) {
-            return Container();
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           } else {
             return Container();
           }

@@ -18,4 +18,9 @@ class LocationRepo extends BaseDioApiRequest{
     Response response = await sendRequest(url: "$locationsUrl/$id",queryParameters: params);
     return Location.fromJson(response.data);
   }
+
+  Future<Location> getLocationByUrl(String url) async {
+    Response response = await sendRequest(url: url);
+    return Location.fromJson(response.data);
+  }
 }
