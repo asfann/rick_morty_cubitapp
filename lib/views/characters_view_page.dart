@@ -83,8 +83,6 @@ class _CharactersViewState extends State<CharactersView> {
                           )
                       )
                   );
-
-
                 }),
             AdvancedButton(
               text: 'ADVANCED FILTER',
